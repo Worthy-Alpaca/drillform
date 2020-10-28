@@ -35,11 +35,20 @@ class App extends Component {
     var timezone;
     var jumprange;
     var homebase;
-    if (this.state.timezone.toLowerCase().includes("utc")) {
-      timezone = this.state.timezone.toLowerCase().replace("utc", "");
+    var re = /[.*+?^${}():"|[\]\\]/g;
+
+    if (this.state.timezone.toLowerCase().includes("-")) {
+      timezone = this.state.timezone
     } else {
-      timezone = this.state.timezone;
+      timezone = `+${this.state.timezone}`;
     }
+
+    if (timezone > 12) {
+      const input2 = document.getElementById('input2');
+      return input2.classList.add('border_red');
+    }
+
+    var nick = this.state.ircnick.replace(re, "");
 
     if (this.state.jumprange.toLowerCase().includes("ly")) {
       jumprange = this.state.jumprange.toLowerCase().replace("ly", "");
@@ -50,7 +59,7 @@ class App extends Component {
     if (this.state.homebase === "") {
       homebase = "No homebase";
     } else {
-      homebase = this.state.homebase;
+      homebase = this.state.homebase.replace(re, "");
     }
 
     var params = {
@@ -66,7 +75,7 @@ class App extends Component {
           "fields": [
             {
               "name": "IRC nick",
-              "value": this.state.ircnick,
+              "value": nick.replace(/\s/g, "_"),
               "inline": true
             },
             {
@@ -129,7 +138,7 @@ class App extends Component {
 
             <label htmlFor="timezone"><b className="tooltip" style={{ color: "white" }}>Timezone in UTC *<span class="tooltiptext">UTC is ingame time</span></b></label>
             <br/>
-            <input id="input2" type="number" placeholder="UTC" name="timezone" onChange={this._handleChange} required />
+            <input id="input2" type="number" placeholder="UTC" max="12" name="timezone" onChange={this._handleChange} required />
             <br/>
             <br/>
             <label htmlFor="availability"><b style={{ color: "white" }}>When are you usually available? (in UTC) *</b></label>
