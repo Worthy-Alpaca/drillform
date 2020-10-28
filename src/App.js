@@ -22,7 +22,7 @@ class App extends Component {
   handleFormSubmit = (e) => {
     e.preventDefault();
     if (this.state.ircnick === "" || this.state.timezone === "" || this.state.jumprange === "") {
-      const input1 = document.getElementById("input1")
+      const input1 = document.getElementById("input1");
       const input2 = document.getElementById('input2');
       const input3 = document.getElementById('input3');
       input1.classList.add('border_red');
@@ -35,7 +35,7 @@ class App extends Component {
     if (this.state.timezone.toLowerCase().includes("utc")) {
       timezone = this.state.timezone.toLowerCase().replace("utc", "");
     } else {
-      timezone = this.state.timezone
+      timezone = this.state.timezone;
     }
 
     if (this.state.jumprange.toLowerCase().includes("ly")) {
@@ -52,11 +52,14 @@ class App extends Component {
 
     var params = {
       username: "Drill Request",
-      avatar_url: "",
+      avatar_url: "https://media.istockphoto.com/vectors/cartoon-power-drill-tool-vector-id513532371",
       embeds: [
         {          
           "title": "New drill request",
           "color": 15258703,
+          "thumbnail": {
+            "url": "https://announcer-dev.fuelrats.com/pyramid-static/drillrat.jpg",
+          },
           "fields": [
             {
               "name": "IRC nick",
