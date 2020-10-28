@@ -9,6 +9,7 @@ class App extends Component {
     timezone: "",
     jumprange: "",
     homebase: "",
+    availability: ""
   }
 
   _handleChange = (e) => {
@@ -21,12 +22,14 @@ class App extends Component {
 
   handleFormSubmit = (e) => {
     e.preventDefault();
-    if (this.state.ircnick === "" || this.state.timezone === "" || this.state.jumprange === "") {
+    if (this.state.ircnick === "" || this.state.timezone === "" || this.state.jumprange === "" || this.state.availability === "") {
       const input1 = document.getElementById("input1");
       const input2 = document.getElementById('input2');
       const input3 = document.getElementById('input3');
+      const input5 = document.getElementById('input5');
       input1.classList.add('border_red');
       input2.classList.add('border_red');
+      input5.classList.add('border_red');
       return input3.classList.add('border_red');
     }
     var timezone;
@@ -70,6 +73,10 @@ class App extends Component {
               "name": "Timezone",
               "value": `UTC ${timezone}`,
               "inline": true
+            },
+            {
+              "name": "Usually available",
+              "value": `${this.state.availability} UTC`
             },
             {
               "name": "Jumprange of ratship",
@@ -120,13 +127,21 @@ class App extends Component {
             <label htmlFor="ircnick"><b style={{ color: "white" }}>IRC Nick *</b></label>
             <input id="input1" type="text" placeholder="Enter Your IRC Nick" name="ircnick" onChange={this._handleChange} required />
 
-            <label htmlFor="timezone"><b style={{ color: "white" }}>Timezone in UTC *</b></label>
-            <input id="input2" type="text" placeholder="Enter Timezone" name="timezone" onChange={this._handleChange} required />
-
+            <label htmlFor="timezone"><b style={{ color: "white" }}>Timezone in <abbr title="This is the ingame Time">UTC</abbr> *</b></label>
+            <br/>
+            <input id="input2" type="number" placeholder="UTC" name="timezone" onChange={this._handleChange} required />
+            <br/>
+            <br/>
+            <label htmlFor="availability"><b style={{ color: "white" }}>When are you usually available? (in <abbr title="This is the ingame Time">UTC</abbr>) *</b></label>
+            <br/>
+            <input id="input5" type="time" placeholder="Your availability" name="availability" onChange={this._handleChange} />
+            <br/>
+            <br/>
             <label htmlFor="jumprange"><b style={{ color: "white" }}>The jumprange of your ratship in lightyears (ly) *</b></label>
+            <br/>
             <input id="input3" type="text" placeholder="Enter Jumprange" name="jumprange" onChange={this._handleChange} required />
-
-            {/* <p style={{ color: "white" }}>If you have a homesystem you can enter it here</p> */}
+            <br/>
+            <br/>
             <label htmlFor="homebase"><b style={{ color: "white" }}>Your Homesystem</b></label>
             <input id="input4" type="text" placeholder="Enter Homebase" name="homebase" onChange={this._handleChange} />
 
