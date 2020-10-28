@@ -150,7 +150,7 @@ class App extends Component {
 
           </div>
         </form>
-        <h2 id='success_message' style={{ textAlign: 'center', display: "none", color: "white" }}>Thank you for using this system. Your Overseer will contact you regarding a drill.</h2>
+        <h2 id='success_message' style={{ textAlign: 'center', display: "none", color: "white" }}>Thank you for using this system. An Overseer will contact you regarding a drill.</h2>
         <h2 id='failure_message' style={{ textAlign: 'center', display: "none", color: "red" }}>Something went wrong. Please reload the page and make sure to enter all required information!</h2>
       </React.Fragment>
     )
