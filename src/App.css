@@ -32,13 +32,13 @@
 
             /* Center the image and position the close button */
             .imgcontainer {
-                text-align: center;
+                text-align: left;
                 margin: auto;
                 position: relative;
             }
 
             img.avatar {                
-                border-radius: 50%;                
+                border-radius: 10%;                
             }
 
             .avatar {
@@ -110,6 +110,10 @@
 
             @media screen and (max-width: 1010px) {
                 .modal-content {
+                    width: 100%;
+                }
+                .avatar {
+                    height: 500px;
                     width: 100%;
                 }
             }

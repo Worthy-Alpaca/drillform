@@ -111,6 +111,8 @@ class App extends Component {
         if (res.status === 204) {
           const form = document.getElementById("form");
           const message = document.getElementById('success_message');
+          const img = document.getElementById('img');
+          img.style.display = 'block';
           form.style.display = 'none';
           message.style.display = 'block';
         } else {
@@ -136,7 +138,7 @@ class App extends Component {
             <label htmlFor="ircnick"><b style={{ color: "white" }}>IRC Nick *</b></label>
             <input id="input1" type="text" placeholder="IRC Nick" maxLength="30" name="ircnick" onChange={this._handleChange} required />
 
-            <label htmlFor="timezone"><b className="tooltip" style={{ color: "white" }}>Timezone in UTC *<span class="tooltiptext">UTC is ingame time</span></b></label>
+            <label htmlFor="timezone"><b className="tooltip" style={{ color: "white" }}>Timezone in UTC *<span className="tooltiptext">UTC is ingame time</span></b></label>
             <br/>
             <input id="input2" type="number" placeholder="UTC" max="12" name="timezone" onChange={this._handleChange} required />
             <br/>
@@ -146,12 +148,12 @@ class App extends Component {
             <input id="input5" type="time" placeholder="Your availability" name="availability" onChange={this._handleChange} />
             <br/>
             <br/>
-            <label htmlFor="jumprange"><b className="tooltip" style={{ color: "white" }}>The jumprange of your ratship in lightyears (LY) *<span class="tooltiptext">Should be at least 20ly</span></b></label>
+            <label htmlFor="jumprange"><b className="tooltip" style={{ color: "white" }}>The jumprange of your ratship in lightyears (LY) *<span className="tooltiptext">Should be at least 20ly</span></b></label>
             <br/>
             <input id="input3" type="text" placeholder="LY" maxLength="2" name="jumprange" onChange={this._handleChange} required />
             <br/>
             <br/>
-            <label htmlFor="homebase"><b className="tooltip" style={{ color: "white" }}>Your Homesystem<span class="tooltiptext">If you have one</span></b></label>
+            <label htmlFor="homebase"><b className="tooltip" style={{ color: "white" }}>Your Homesystem<span className="tooltiptext">If you have one</span></b></label>
             <input id="input4" type="text" placeholder="Homesystem" maxLength="30" name="homebase" onChange={this._handleChange} />
 
             <button onClick={this.handleFormSubmit}>Submit</button>
@@ -161,6 +163,9 @@ class App extends Component {
         </form>
         <h2 id='success_message' style={{ textAlign: 'center', display: "none", color: "white" }}>Thank you for using this system. Your request has been filed.</h2>
         <h2 id='failure_message' style={{ textAlign: 'center', display: "none", color: "red" }}>Something went wrong. Please reload the page and make sure to enter all required information!</h2>
+        <div id="img" className="imgcontainer" style={{ textAlign: 'center', display: "none", color: "white" }}>
+          <img src="https://announcer-dev.fuelrats.com/pyramid-static/drillrat.jpg" className="avatar" alt='' />
+        </div>
       </React.Fragment>
     )
   }
