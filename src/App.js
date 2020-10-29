@@ -134,7 +134,7 @@ class App extends Component {
           <div className="container">
 
             <label htmlFor="ircnick"><b style={{ color: "white" }}>IRC Nick *</b></label>
-            <input id="input1" type="text" placeholder="Enter Your IRC Nick" maxLength="30" name="ircnick" onChange={this._handleChange} required />
+            <input id="input1" type="text" placeholder="IRC Nick" maxLength="30" name="ircnick" onChange={this._handleChange} required />
 
             <label htmlFor="timezone"><b className="tooltip" style={{ color: "white" }}>Timezone in UTC *<span class="tooltiptext">UTC is ingame time</span></b></label>
             <br/>
@@ -146,13 +146,13 @@ class App extends Component {
             <input id="input5" type="time" placeholder="Your availability" name="availability" onChange={this._handleChange} />
             <br/>
             <br/>
-            <label htmlFor="jumprange"><b className="tooltip" style={{ color: "white" }}>The jumprange of your ratship in lightyears (ly) *<span class="tooltiptext">Should be at least 20ly</span></b></label>
+            <label htmlFor="jumprange"><b className="tooltip" style={{ color: "white" }}>The jumprange of your ratship in lightyears (LY) *<span class="tooltiptext">Should be at least 20ly</span></b></label>
             <br/>
-            <input id="input3" type="text" placeholder="Enter Jumprange" maxLength="2" name="jumprange" onChange={this._handleChange} required />
+            <input id="input3" type="text" placeholder="LY" maxLength="2" name="jumprange" onChange={this._handleChange} required />
             <br/>
             <br/>
             <label htmlFor="homebase"><b className="tooltip" style={{ color: "white" }}>Your Homesystem<span class="tooltiptext">If you have one</span></b></label>
-            <input id="input4" type="text" placeholder="Enter Homebase" maxLength="30" name="homebase" onChange={this._handleChange} />
+            <input id="input4" type="text" placeholder="Homesystem" maxLength="30" name="homebase" onChange={this._handleChange} />
 
             <button onClick={this.handleFormSubmit}>Submit</button>
             <p style={{ color: "white" }}><i>* is required</i></p>
