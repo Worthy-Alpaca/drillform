@@ -43,7 +43,7 @@ class App extends Component {
       timezone = `+${this.state.timezone}`;
     }
 
-    if (timezone > 12) {
+    if (timezone > 12 || timezone < -12) {
       const input2 = document.getElementById('input2');
       return input2.classList.add('border_red');
     }
@@ -140,7 +140,7 @@ class App extends Component {
 
             <label htmlFor="timezone"><b className="tooltip" style={{ color: "white" }}>Timezone in UTC *<span className="tooltiptext">UTC is ingame time</span></b></label>
             <br/>
-            <input id="input2" type="number" placeholder="UTC" max="12" name="timezone" onChange={this._handleChange} required />
+            <input id="input2" type="number" placeholder="UTC" maxLength="3" min="-12" max="12" name="timezone" onChange={this._handleChange} required />
             <br/>
             <br/>
             <label htmlFor="availability"><b style={{ color: "white" }}>When are you usually available? (in UTC) *</b></label>
