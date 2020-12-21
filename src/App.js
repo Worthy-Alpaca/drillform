@@ -143,7 +143,7 @@ class App extends Component {
             <input id="input2" type="number" placeholder="UTC" maxLength="3" min="-12" max="12" name="timezone" onChange={this._handleChange} required />
             <br/>
             <br/>
-            <label htmlFor="availability"><b style={{ color: "white" }}>When are you usually available? (in UTC) *</b></label>
+            <label htmlFor="availability"><b className="tooltip" style={{ color: "white" }}>When are you usually available? (in UTC) *<span className="tooltiptext">This is military time. Example: 1pm is 13:00</span></b></label>
             <br/>
             <input id="input5" type="time" placeholder="Your availability" name="availability" onChange={this._handleChange} />
             <br/>
@@ -158,6 +158,7 @@ class App extends Component {
 
             <button onClick={this.handleFormSubmit}>Submit</button>
             <p style={{ color: "white" }}><i>* is required</i></p>
+            <p style={{ color: "white" }}><i>Disclaimer: Filing this does not mean you won't actively have to look for an Overseer! It's just meant to increase your chances of an Overseer finding you!</i></p>
 
           </div>
         </form>
