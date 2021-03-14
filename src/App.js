@@ -35,6 +35,7 @@ class App extends Component {
     var timezone;
     var jumprange;
     var homebase;
+    var request;
     var re = /[.*+?^${}():"|[\]\\]/g;
 
     if (this.state.timezone.toLowerCase().includes("-")) {
@@ -60,6 +61,12 @@ class App extends Component {
       homebase = "No homebase";
     } else {
       homebase = this.state.homebase.replace(re, "");
+    }
+
+    if (this.state.request) {
+      request = "YES";
+    } else {
+      request = "NO";
     }
 
     var params = {
@@ -94,6 +101,10 @@ class App extends Component {
             {
               "name": "Homebase",
               "value": homebase
+            },
+            {
+              "name": "Drillrequest submitted",
+              "value": request
             }
           ]
         }
@@ -123,7 +134,7 @@ class App extends Component {
         }
       })
         .catch(err => {
-          console.log("err")
+          console.log(err)
         })
     })
   }
@@ -134,6 +145,7 @@ class App extends Component {
       <React.Fragment>
         <form className="modal-content" id='form'>
           <div className="container">
+            <h2 style={{ color: "white" }}>Overseer Poking Stick</h2>
 
             <label htmlFor="ircnick"><b style={{ color: "white" }}>IRC Nick *</b></label>
             <input id="input1" type="text" placeholder="IRC Nick" maxLength="30" name="ircnick" onChange={this._handleChange} required />
@@ -155,6 +167,8 @@ class App extends Component {
             <br/>
             <label htmlFor="homebase"><b className="tooltip" style={{ color: "white" }}>Your Homesystem<span className="tooltiptext">If you have one</span></b></label>
             <input id="input4" type="text" placeholder="Homesystem" maxLength="30" name="homebase" onChange={this._handleChange} />
+            <label htmlFor="request"><b className="tooltip" style={{ color: "white" }}>Drillrequest submitted<span className="tooltiptext">You submitted a drillrequest on JIRA</span></b></label>
+            <input type="checkbox" name="request" className="input05" onChange={this._handleChange}/>
 
             <button onClick={this.handleFormSubmit}>Submit</button>
             <p style={{ color: "white" }}><i>* is required</i></p>
